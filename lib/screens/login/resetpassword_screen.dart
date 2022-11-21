@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:loanapp/screens/login.dart';
+import 'package:loanapp/screens/login/login_screen.dart';
 import 'package:loanapp/theme.dart';
 import 'package:loanapp/widgets/primary_button.dart';
 import 'package:loanapp/widgets/reset_form.dart';
@@ -39,7 +39,7 @@ class ResetPasswordScreen extends StatelessWidget {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => LogInScreen(),
+                        builder: (context) => LoginScreen(),
                       ));
                 },
                 child: PrimaryButton(buttonText: 'Reset Password')),

@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:loanapp/screens/dashboard.dart';
-import 'package:loanapp/screens/reset_password.dart';
-import 'package:loanapp/screens/signup.dart';
+import 'package:loanapp/screens/login/resetpassword_screen.dart';
+import 'package:loanapp/screens/login/signup_screen.dart';
 import 'package:loanapp/theme.dart';
 import 'package:loanapp/widgets/login_form.dart';
 import 'package:loanapp/widgets/primary_button.dart';
-import 'package:loanapp/screens/home.dart';
 
-class LogInScreen extends StatelessWidget {
+class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,7 +49,7 @@ class LogInScreen extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => SignUpScreen(),
+                              builder: (context) => SignupScreen(),
                             ),
                           );
                         },

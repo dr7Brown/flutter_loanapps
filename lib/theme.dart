@@ -9,16 +9,19 @@ const kBlackColor = Color(0xFF272726);
 const kTextFieldColor = Color(0xFF979797);
 const kcolormix = Color.fromARGB(250, 127, 187, 227);
 const kOffWhitcolor = Color.fromARGB(214, 255, 255, 255);
+const kOffWhitecolor2 = Color.fromARGB(255, 239, 233, 217);
 //  const primaryColor = Color(0xff2F8D46),
 const splashColor = Colors.transparent;
 const highlightColor = Colors.transparent;
 const hoverColor = Colors.transparent;
 const kGreenColor = Color.fromARGB(219, 41, 133, 5);
 
+//Paddings
 const ksmallPadding = EdgeInsets.symmetric(horizontal: 20);
 const kDefaultPadding = EdgeInsets.symmetric(horizontal: 30, vertical: 30);
 const kLargePadding = EdgeInsets.symmetric(horizontal: 40);
 const kxLargePadding = EdgeInsets.symmetric(horizontal: 50);
+
 
 TextStyle titleText = const TextStyle(
     color: kPrimaryColor, fontSize: 32, fontWeight: FontWeight.w700);

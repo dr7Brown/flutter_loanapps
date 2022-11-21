@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:loanapp/screens/login.dart';
+import 'package:loanapp/screens/login/login_screen.dart';
 import 'package:loanapp/theme.dart';
 import 'package:loanapp/widgets/checkbox.dart';
 import 'package:loanapp/widgets/primary_button.dart';
 import 'package:loanapp/widgets/signup_form.dart';
 
-class SignUpScreen extends StatelessWidget {
+class SignupScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -56,7 +56,7 @@ class SignUpScreen extends StatelessWidget {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => LogInScreen()));
+                                      builder: (context) => LoginScreen()));
                             },
                             child: Text(
                               'Log In',

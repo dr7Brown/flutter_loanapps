@@ -1,13 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:loanapp/mdashboard.dart';
+import 'package:loanapp/container_navigation.dart';
 import 'package:loanapp/screens/dashboard.dart';
-import 'package:loanapp/screens/home.dart';
-import 'package:loanapp/screens/layouts.dart';
-import 'package:loanapp/screens/loading_screen.dart';
-import 'package:loanapp/screens/login.dart';
-import 'package:loanapp/screens/signup.dart';
-import 'package:loanapp/mdashboard.dart';
-
+import 'package:loanapp/screens/login/login_screen.dart';
+import 'package:loanapp/screens/login/signup_screen.dart';
 import 'myhomepage.dart';
 
 void main() {
@@ -25,18 +20,14 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(fontFamily: 'Poppins'),
-      //home: HomePage(),
-      initialRoute: '/dashboard',
+      initialRoute: '/container_navigation',
       routes: {
-        '/': (context) => LoadingScreen(),
-        '/login': (context) => LogInScreen(),
-        '/signup': (context) => SignUpScreen(),
-        '/home': (context) => HomeScreen(),
-        '/homepage': (context) => HomePage(),
-        '/loading_screen': (context) => LoadingScreen(),
+        '/': (context) => LoginScreen(),
+        '/login': (context) => LoginScreen(),
+        '/signup': (context) => SignupScreen(),
         '/myhomepage': (context) => MyHomePage(),
         '/dashboard': (context) => DashboardWidget(),
-        '/mdashboard': (context) => MDashboard(),
+        '/container_navigation': (context) => ContainerMainNav(),
       },
     );
   }
