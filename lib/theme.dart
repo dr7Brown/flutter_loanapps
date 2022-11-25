@@ -15,13 +15,13 @@ const splashColor = Colors.transparent;
 const highlightColor = Colors.transparent;
 const hoverColor = Colors.transparent;
 const kGreenColor = Color.fromARGB(219, 41, 133, 5);
+const kAmberColor = Color.fromARGB(219, 223, 40, 40);
 
 //Paddings
 const ksmallPadding = EdgeInsets.symmetric(horizontal: 20);
 const kDefaultPadding = EdgeInsets.symmetric(horizontal: 30, vertical: 30);
 const kLargePadding = EdgeInsets.symmetric(horizontal: 40);
 const kxLargePadding = EdgeInsets.symmetric(horizontal: 50);
-
 
 TextStyle titleText = const TextStyle(
     color: kPrimaryColor, fontSize: 32, fontWeight: FontWeight.w700);

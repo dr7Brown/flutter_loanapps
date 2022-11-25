@@ -35,7 +35,7 @@ class _PayDepoContainerState extends State<PayDepoContainer> {
                   text: 'Loans', /*icon: Icon(Icons.directions_transit)*/
                 ),
                 Tab(
-                  text: 'Deposite', /*icon: Icon(Icons.directions_transit)*/
+                  text: 'Deposit', /*icon: Icon(Icons.directions_transit)*/
                 ),
               ],
             ),

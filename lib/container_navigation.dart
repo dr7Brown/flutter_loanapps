@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:loanapp/screens/dashboard.dart';
 import 'package:loanapp/screens/login/container_login.dart';
-import 'package:loanapp/screens/login/login_screen.dart';
 import 'package:loanapp/screens/payment_container.dart';
 import 'package:loanapp/theme.dart';
 import 'package:loanapp/myhomepage.dart';
@@ -25,9 +24,7 @@ class _ContainerMainNavState extends State<ContainerMainNav> {
         index: index,
         children: const [
           DashboardWidget(),
-
           PayDepoContainer(),
-          //const TestWidget(),
           LoginContainer(),
           MyHomePage(),
         ],
