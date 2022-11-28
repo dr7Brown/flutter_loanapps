@@ -2,15 +2,10 @@
 
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:loanapp/screens/payments_screen.dart';
 import 'package:loanapp/screens/deposit_screen.dart';
 import 'package:loanapp/screens/repayment_screen.dart';
 import 'package:loanapp/theme.dart';
-
-import '../myhomepage.dart';
 
 class PayDepoContainer extends StatefulWidget {
   const PayDepoContainer({super.key});

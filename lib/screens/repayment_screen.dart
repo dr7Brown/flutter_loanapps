@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:grouped_list/grouped_list.dart';
+import 'package:loanapp/screens/add_repayment_screen.dart';
 import 'package:loanapp/theme.dart';
 
 class RepaymentScreen extends StatefulWidget {
@@ -27,6 +28,16 @@ class _RepaymentScreenState extends State<RepaymentScreen> {
     return Scaffold(
       key: scaffoldKey,
       backgroundColor: kWhiteColor,
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () {
+          // Add your onPressed code here!
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => AddRepaymentScreen()));
+        },
+        label: const Text('Repayment'),
+        icon: const Icon(Icons.add),
+        backgroundColor: kAmberTransColor,
+      ),
       body: Container(
         //ListView starts here
         //physics: ScrollPhysics(),

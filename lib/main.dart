@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:loanapp/container_navigation.dart';
 import 'package:loanapp/screens/dashboard.dart';
-import 'package:loanapp/screens/login/login_screen.dart';
-import 'package:loanapp/screens/login/signup_screen.dart';
+import 'package:loanapp/screens/views/login_view.dart';
+import 'package:loanapp/screens/views/signup_view.dart';
 import 'myhomepage.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatefulWidget {
+  const MyApp({super.key});
   @override
   State<MyApp> createState() => _MyAppState();
 }
@@ -20,14 +21,16 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(fontFamily: 'Poppins'),
+      //initialRoute: '/login_view',    //uncomment after testing
       initialRoute: '/container_navigation',
       routes: {
-        '/': (context) => LoginScreen(),
-        '/login': (context) => LoginScreen(),
-        '/signup': (context) => SignupScreen(),
-        '/myhomepage': (context) => MyHomePage(),
-        '/dashboard': (context) => DashboardWidget(),
-        '/container_navigation': (context) => ContainerMainNav(),
+        //  '/': (context) => const LoginView(),  //uncomment after testing
+        '/': (context) => const ContainerMainNav(),
+        '/login': (context) => const LoginView(),
+        '/signup': (context) => const SignUpView(),
+        '/myhomepage': (context) => const MyHomePage(),
+        '/dashboard': (context) => const DashboardWidget(),
+        '/container_navigation': (context) => const ContainerMainNav(),
       },
     );
   }

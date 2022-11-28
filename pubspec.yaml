@@ -43,6 +43,15 @@ dependencies:
   #Grouped listview package
   grouped_list: ^5.1.2
 
+  #Data picker package
+  intl: ^0.17.0
+
+  #Copied from login template (All 3 below)
+  get: ^4.6.5
+  google_fonts: ^3.0.1
+  lottie: ^1.4.2
+
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -75,6 +84,10 @@ flutter:
     - images/mat_cancel.png
     - images/mat_empty_box.png
     - images/mat_checked.png
+    - assets/
+    - assets/coin.json
+    - assets/wave.json
+
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 

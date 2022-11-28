@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:loanapp/screens/dashboard.dart';
-import 'package:loanapp/screens/login/container_login.dart';
 import 'package:loanapp/screens/payment_container.dart';
+import 'package:loanapp/screens/views/loan_application_view.dart';
 import 'package:loanapp/theme.dart';
 import 'package:loanapp/myhomepage.dart';
 
@@ -25,7 +25,7 @@ class _ContainerMainNavState extends State<ContainerMainNav> {
         children: const [
           DashboardWidget(),
           PayDepoContainer(),
-          LoginContainer(),
+          LoanApplicationScreen(),
           MyHomePage(),
         ],
       ),
@@ -39,7 +39,7 @@ class _ContainerMainNavState extends State<ContainerMainNav> {
               activeColor: kcolormix,
               //hoverColor: kcolormix,
               gap: 8,
-              padding: EdgeInsets.all(16),
+              padding: const EdgeInsets.all(16),
               onTabChange: (int newIndex) {
                 //perform on tab change actions here.
                 setState(() {

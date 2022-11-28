@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
+//const kPrimaryColor = Color.fromARGB(182, 2, 1, 33);
 const kPrimaryColor = Color.fromARGB(255, 2, 1, 33);
 const kSecondaryColor = Color.fromARGB(255, 139, 149, 165);
 const kDarkGreyColor = Color(0xFFA8A8A8);
@@ -16,6 +18,8 @@ const highlightColor = Colors.transparent;
 const hoverColor = Colors.transparent;
 const kGreenColor = Color.fromARGB(219, 41, 133, 5);
 const kAmberColor = Color.fromARGB(219, 223, 40, 40);
+const kAmberTransColor = Color.fromARGB(113, 208, 17, 62);
+const kPurpleDeepColor = Color.fromARGB(255, 124, 77, 255);
 
 //Paddings
 const ksmallPadding = EdgeInsets.symmetric(horizontal: 20);
@@ -34,3 +38,57 @@ TextStyle textButton = const TextStyle(
 );
 TextStyle listViewText = const TextStyle(
     color: kWhiteColor, fontSize: 20, fontWeight: FontWeight.w700);
+
+//
+
+TextStyle kLoginTitleStyle(Size size) => GoogleFonts.ubuntu(
+      fontSize: size.height * 0.060,
+      fontWeight: FontWeight.bold,
+    );
+
+TextStyle kLoginSubtitleStyle(Size size) => GoogleFonts.ubuntu(
+      fontSize: size.height * 0.030,
+    );
+
+TextStyle kLoginTermsAndPrivacyStyle(Size size) =>
+    GoogleFonts.ubuntu(fontSize: 15, color: Colors.grey, height: 1.5);
+
+TextStyle kHaveAnAccountStyle(Size size) =>
+    GoogleFonts.ubuntu(fontSize: size.height * 0.022, color: Colors.black);
+
+TextStyle kLoginOrSignUpTextStyle(
+  Size size,
+) =>
+    GoogleFonts.ubuntu(
+      fontSize: size.height * 0.022,
+      fontWeight: FontWeight.w500,
+      color: Colors.deepPurpleAccent,
+    );
+
+TextStyle kTextFormFieldStyle() => const TextStyle(color: Colors.black);
+
+//Font sizes
+TextStyle kxSmallFontStyle(Size size) => GoogleFonts.ubuntu(
+      fontSize: size.height * 0.010,
+      fontWeight: FontWeight.bold,
+    );
+TextStyle kSmallFontStyle(Size size) => GoogleFonts.ubuntu(
+      fontSize: size.height * 0.020,
+      fontWeight: FontWeight.bold,
+    );
+TextStyle kNormalFontStyle(Size size) => GoogleFonts.ubuntu(
+      fontSize: size.height * 0.040,
+      fontWeight: FontWeight.bold,
+    );
+TextStyle kDefualtFontStyle(Size size) => GoogleFonts.ubuntu(
+      fontSize: size.height * 0.040,
+      fontWeight: FontWeight.bold,
+    );
+TextStyle kLargeFontStyle(Size size) => GoogleFonts.ubuntu(
+      fontSize: size.height * 0.060,
+      fontWeight: FontWeight.bold,
+    );
+TextStyle kxLargeFontStyle(Size size) => GoogleFonts.ubuntu(
+      fontSize: size.height * 0.080,
+      fontWeight: FontWeight.bold,
+    );

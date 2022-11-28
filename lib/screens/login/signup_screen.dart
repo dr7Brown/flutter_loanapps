@@ -6,6 +6,8 @@ import 'package:loanapp/widgets/primary_button.dart';
 import 'package:loanapp/widgets/signup_form.dart';
 
 class SignupScreen extends StatelessWidget {
+  const SignupScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

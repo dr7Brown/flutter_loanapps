@@ -5,6 +5,8 @@ import 'package:loanapp/widgets/primary_button.dart';
 import 'package:loanapp/widgets/reset_form.dart';
 
 class ResetPasswordScreen extends StatelessWidget {
+  const ResetPasswordScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,25 +18,25 @@ class ResetPasswordScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(
+            const SizedBox(
               height: 250,
             ),
             Text(
               'Reset Password',
               style: titleText,
             ),
-            SizedBox(
+            const SizedBox(
               height: 5,
             ),
             Text(
               'Please enter your email address',
               style: subTitle.copyWith(fontWeight: FontWeight.w600),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             ResetForm(),
-            SizedBox(
+            const SizedBox(
               height: 40,
             ),
             GestureDetector(

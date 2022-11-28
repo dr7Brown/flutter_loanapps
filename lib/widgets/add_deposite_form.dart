@@ -1,9 +1,6 @@
 import 'package:loanapp/theme.dart';
 import 'package:flutter/material.dart';
-import 'dart:async';
-import 'package:flutter/cupertino.dart';
-
-import 'package:loanapp/widgets/primary_button.dart';
+import 'package:intl/intl.dart';
 
 class AddDepositeForm extends StatefulWidget {
   @override
@@ -11,22 +8,17 @@ class AddDepositeForm extends StatefulWidget {
 }
 
 class _AddDepositeFormState extends State<AddDepositeForm> {
-  DateTime selectedDate = DateTime.now();
+  //***********Date picker data ******8/
+  TextEditingController dateinputController = TextEditingController();
+  //text editing controller for text field
 
-/*
-  Future<void> _selectDate(BuildContext context) async {
-    final DateTime? picked = await showDatePicker(
-        context: context,
-        initialDate: selectedDate,
-        firstDate: DateTime(2015, 8),
-        lastDate: DateTime(2101));
-    if (picked != null && picked != selectedDate) {
-      setState(() {
-        selectedDate = picked;
-      });
-    }
+  @override
+  void initState() {
+    dateinputController.text = "${DateTime.now().toLocal()}"
+        .split(' ')[0]; //set the initial value of text field
+    super.initState();
   }
-  */
+  //***************End of Date picker data */
 
   @override
   Widget build(BuildContext context) {
@@ -49,11 +41,46 @@ class _AddDepositeFormState extends State<AddDepositeForm> {
                       const Icon(Icons.person_outlined)),
                   buildInputForm('Amount', 'Enter amount', '',
                       const Icon(Icons.phone_in_talk_outlined)),
-                  buildInputForm(
-                      'Date',
-                      'Click to change date',
-                      "${selectedDate.toLocal()}".split(' ')[0],
-                      const Icon(Icons.add_home_work_sharp)),
+                  //******************DAte picker files */
+                  TextFormField(
+                    controller:
+                        dateinputController, //editing controller of this TextField4
+
+                    decoration: const InputDecoration(
+                        prefixIcon:
+                            Icon(Icons.calendar_today), //icon of text field
+                        labelText: "Date yyyy/mm/dd" //label text of field
+                        ),
+                    readOnly:
+                        true, //set it true, so that user will not able to edit text
+                    onTap: () async {
+                      DateTime? pickedDate = await showDatePicker(
+                          context: context,
+                          initialDate: DateTime.now(),
+                          firstDate: DateTime(
+                              2000), //DateTime.now() - not to allow to choose before today.
+                          lastDate: DateTime(2101));
+
+                      if (pickedDate != null) {
+                        print(
+                            pickedDate); //pickedDate output format => 2021-03-10 00:00:00.000
+                        String formattedDate =
+                            DateFormat('yyyy-MM-dd').format(pickedDate);
+                        print(
+                            formattedDate); //formatted date output using intl package =>  2021-03-16
+                        //you can implement different kind of Date Format here according to your requirement
+
+                        setState(() {
+                          dateinputController.text =
+                              formattedDate; //set output date to TextField value.
+                        });
+                      } else {
+                        print("Date is not selected");
+                      }
+                    },
+                  ),
+                  //********************End of date picker files */
+
                   SizedBox(
                     height: 10.0,
                   ),

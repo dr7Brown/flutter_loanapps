@@ -1,5 +1,6 @@
 import 'package:loanapp/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class AddExpensesForm extends StatefulWidget {
   @override
@@ -7,7 +8,17 @@ class AddExpensesForm extends StatefulWidget {
 }
 
 class _AddExpensesFormState extends State<AddExpensesForm> {
-  DateTime selectedDate = DateTime.now();
+//***********Date picker data ******8/
+  TextEditingController dateinput = TextEditingController();
+  //text editing controller for text field
+
+  @override
+  void initState() {
+    dateinput.text = "${DateTime.now().toLocal()}"
+        .split(' ')[0]; //set the initial value of text field
+    super.initState();
+  }
+  //***************End of Date picker data */
 
   @override
   Widget build(BuildContext context) {
@@ -30,11 +41,45 @@ class _AddExpensesFormState extends State<AddExpensesForm> {
                       const Icon(Icons.person_outlined)),
                   buildInputForm('Amount', 'Enter amount', '',
                       const Icon(Icons.phone_in_talk_outlined)),
-                  buildInputForm(
-                      'Date',
-                      '',
-                      "${selectedDate.toLocal()}".split(' ')[0],
-                      const Icon(Icons.add_home_work_sharp)),
+                  //******************DAte picker files */
+                  TextFormField(
+                    controller:
+                        dateinput, //editing controller of this TextField4
+
+                    decoration: const InputDecoration(
+                        prefixIcon: Icon(Icons.calendar_today), //icon of text field
+                        labelText: "Date yyyy/mm/dd" //label text of field
+                        ),
+                    readOnly:
+                        true, //set it true, so that user will not able to edit text
+                    onTap: () async {
+                      DateTime? pickedDate = await showDatePicker(
+                          context: context,
+                          initialDate: DateTime.now(),
+                          firstDate: DateTime(
+                              2000), //DateTime.now() - not to allow to choose before today.
+                          lastDate: DateTime(2101));
+
+                      if (pickedDate != null) {
+                        print(
+                            pickedDate); //pickedDate output format => 2021-03-10 00:00:00.000
+                        String formattedDate =
+                            DateFormat('yyyy-MM-dd').format(pickedDate);
+                        print(
+                            formattedDate); //formatted date output using intl package =>  2021-03-16
+                        //you can implement different kind of Date Format here according to your requirement
+
+                        setState(() {
+                          dateinput.text =
+                              formattedDate; //set output date to TextField value.
+                        });
+                      } else {
+                        print("Date is not selected");
+                      }
+                    },
+                  ),
+                  //********************End of date picker files */
+
                   SizedBox(
                     height: 10.0,
                   ),
@@ -47,8 +92,7 @@ class _AddExpensesFormState extends State<AddExpensesForm> {
             //Submit button
             Container(
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(16),
-                  color: kAmberColor),
+                  borderRadius: BorderRadius.circular(16), color: kAmberColor),
               width: MediaQuery.of(context).size.width * 0.5,
               child: TextButton(
                 onPressed: () => {},
@@ -86,5 +130,4 @@ class _AddExpensesFormState extends State<AddExpensesForm> {
       ),
     );
   }
-
 }
