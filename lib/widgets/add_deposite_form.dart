@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 class AddDepositeForm extends StatefulWidget {
+  const AddDepositeForm({super.key});
+
   @override
   State<AddDepositeForm> createState() => _AddDepositeFormState();
 }
@@ -62,12 +64,10 @@ class _AddDepositeFormState extends State<AddDepositeForm> {
                           lastDate: DateTime(2101));
 
                       if (pickedDate != null) {
-                        print(
-                            pickedDate); //pickedDate output format => 2021-03-10 00:00:00.000
+                        //pickedDate output format => 2021-03-10 00:00:00.000
                         String formattedDate =
                             DateFormat('yyyy-MM-dd').format(pickedDate);
-                        print(
-                            formattedDate); //formatted date output using intl package =>  2021-03-16
+                        //formatted date output using intl package =>  2021-03-16
                         //you can implement different kind of Date Format here according to your requirement
 
                         setState(() {
@@ -75,19 +75,18 @@ class _AddDepositeFormState extends State<AddDepositeForm> {
                               formattedDate; //set output date to TextField value.
                         });
                       } else {
-                        print("Date is not selected");
                       }
                     },
                   ),
                   //********************End of date picker files */
 
-                  SizedBox(
+                  const SizedBox(
                     height: 10.0,
                   ),
                 ],
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 40.0,
             ),
             //Submit button

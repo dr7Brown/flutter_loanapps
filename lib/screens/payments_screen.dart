@@ -30,7 +30,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
         onPressed: () {
           // Add your onPressed code here!
           Navigator.push(context,
-              MaterialPageRoute(builder: (context) => ApplicationScreen()));
+              MaterialPageRoute(builder: (context) => const ApplicationScreen()));
         },
         label: const Text('Request Loan'),
         icon: const Icon(Icons.add),
@@ -89,7 +89,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                       leading: const Icon(Icons.account_circle),
                       title: Text(element['name']),
                       trailing:
-                          Text('GHC 2000'), //const Icon(Icons.arrow_forward),
+                          const Text('GHC 2000'), //const Icon(Icons.arrow_forward),
                       onTap: () {
                         /*    */
                       },

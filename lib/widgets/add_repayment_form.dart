@@ -1,10 +1,10 @@
-import 'dart:html';
-
 import 'package:loanapp/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 class AddRepaymentForm extends StatefulWidget {
+  const AddRepaymentForm({super.key});
+
   @override
   State<AddRepaymentForm> createState() => _AddRepaymentFormState();
 }
@@ -34,255 +34,248 @@ class _AddRepaymentFormState extends State<AddRepaymentForm> {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Container(
-        //width: MediaQuery.of(context).size.width * 0.8,
-        //alignment: Alignment.center,
-        child: Column(
-          children: [
-            Container(
-              width: MediaQuery.of(context).size.width * 0.8,
-              alignment: Alignment.center,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                color: kOffWhitcolor,
-              ),
-              child: Column(
-                children: [
-                  Container(
-                    width: MediaQuery.of(context).size.width,
-                    alignment: Alignment.center,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: kOffWhitcolor,
-                    ),
-                    child: Column(
-                      children: [
-                        Row(
-                          //Row 1
-                          children: [
-                            Expanded(
-                              flex: 1,
-                              child: Container(
-                                color: kDarkGreyColor,
-                                padding: const EdgeInsets.all(40.0),
-                                child: Column(
-                                  children: [
-                                    const Text(
-                                      'Monthly',
-                                      style: TextStyle(
-                                        color: kWhiteColor,
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.w800,
-                                      ),
-                                    ),
-                                    const SizedBox(
-                                      height: 20,
-                                    ),
-                                    Text(
-                                      mMonthly,
-                                      style: const TextStyle(
-                                        backgroundColor: kSecondaryColor,
-                                        color: kWhiteColor,
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.w900,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                            Expanded(
-                              flex: 1,
-                              child: Container(
-                                color: kAmberColor,
-                                padding: const EdgeInsets.all(40.0),
-                                child: Column(
-                                  children: [
-                                    const Text(
-                                      'Total',
-                                      style: TextStyle(
-                                        color: kWhiteColor,
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.w800,
-                                      ),
-                                    ),
-                                    const SizedBox(
-                                      height: 20,
-                                    ),
-                                    Text(
-                                      mTotal,
-                                      style: const TextStyle(
-                                        backgroundColor: kSecondaryColor,
-                                        color: kWhiteColor,
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.w900,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                            const SizedBox(
-                              width: 20,
-                            ),
-                          ],
-                        ),
-                        Row(
-                          //Row 2
-                          children: [
-                            Expanded(
-                              flex: 1,
-                              child: Container(
-                                color: kcolormix,
-                                padding: const EdgeInsets.all(40.0),
-                                child: Column(
-                                  children: [
-                                    const Text(
-                                      'Paid',
-                                      style: TextStyle(
-                                        color: kWhiteColor,
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.w800,
-                                      ),
-                                    ),
-                                    const SizedBox(
-                                      height: 20,
-                                    ),
-                                    Text(
-                                      mPaid,
-                                      style: const TextStyle(
-                                        backgroundColor: kSecondaryColor,
-                                        color: kWhiteColor,
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.w900,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                            Expanded(
-                              flex: 1,
-                              child: Container(
-                                color: kTextFieldColor,
-                                padding: const EdgeInsets.all(40.0),
-                                child: Column(
-                                  children: [
-                                    const Text(
-                                      'Balance',
-                                      style: TextStyle(
-                                        color: kWhiteColor,
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.w800,
-                                      ),
-                                    ),
-                                    const SizedBox(
-                                      height: 20,
-                                    ),
-                                    Text(
-                                      mBalance,
-                                      style: const TextStyle(
-                                        backgroundColor: kSecondaryColor,
-                                        color: kWhiteColor,
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.w900,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                            const SizedBox(
-                              width: 20,
-                            ),
-                          ],
-                        ),
-                      ], /////////////////wooorking here
-                    ),
+      child: Column(
+        children: [
+          Container(
+            width: MediaQuery.of(context).size.width * 0.8,
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              color: kOffWhitcolor,
+            ),
+            child: Column(
+              children: [
+                Container(
+                  width: MediaQuery.of(context).size.width,
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: kOffWhitcolor,
                   ),
-                  const SizedBox(
-                    height: 20.0,
-                  ),
-                  Row(
-                    //Dropdown widget
+                  child: Column(
                     children: [
-                      Text(
-                        'Select Client ',
-                        style: subTitle.copyWith(fontWeight: FontWeight.normal),
+                      Row(
+                        //Row 1
+                        children: [
+                          Expanded(
+                            flex: 1,
+                            child: Container(
+                              color: kDarkGreyColor,
+                              padding: const EdgeInsets.all(40.0),
+                              child: Column(
+                                children: [
+                                  const Text(
+                                    'Monthly',
+                                    style: TextStyle(
+                                      color: kWhiteColor,
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w800,
+                                    ),
+                                  ),
+                                  const SizedBox(
+                                    height: 20,
+                                  ),
+                                  Text(
+                                    mMonthly,
+                                    style: const TextStyle(
+                                      backgroundColor: kSecondaryColor,
+                                      color: kWhiteColor,
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.w900,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                          Expanded(
+                            flex: 1,
+                            child: Container(
+                              color: kAmberColor,
+                              padding: const EdgeInsets.all(40.0),
+                              child: Column(
+                                children: [
+                                  const Text(
+                                    'Total',
+                                    style: TextStyle(
+                                      color: kWhiteColor,
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w800,
+                                    ),
+                                  ),
+                                  const SizedBox(
+                                    height: 20,
+                                  ),
+                                  Text(
+                                    mTotal,
+                                    style: const TextStyle(
+                                      backgroundColor: kSecondaryColor,
+                                      color: kWhiteColor,
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.w900,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                          const SizedBox(
+                            width: 20,
+                          ),
+                        ],
                       ),
-                      const SizedBox(
-                        width: 20,
+                      Row(
+                        //Row 2
+                        children: [
+                          Expanded(
+                            flex: 1,
+                            child: Container(
+                              color: kcolormix,
+                              padding: const EdgeInsets.all(40.0),
+                              child: Column(
+                                children: [
+                                  const Text(
+                                    'Paid',
+                                    style: TextStyle(
+                                      color: kWhiteColor,
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w800,
+                                    ),
+                                  ),
+                                  const SizedBox(
+                                    height: 20,
+                                  ),
+                                  Text(
+                                    mPaid,
+                                    style: const TextStyle(
+                                      backgroundColor: kSecondaryColor,
+                                      color: kWhiteColor,
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.w900,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                          Expanded(
+                            flex: 1,
+                            child: Container(
+                              color: kTextFieldColor,
+                              padding: const EdgeInsets.all(40.0),
+                              child: Column(
+                                children: [
+                                  const Text(
+                                    'Balance',
+                                    style: TextStyle(
+                                      color: kWhiteColor,
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w800,
+                                    ),
+                                  ),
+                                  const SizedBox(
+                                    height: 20,
+                                  ),
+                                  Text(
+                                    mBalance,
+                                    style: const TextStyle(
+                                      backgroundColor: kSecondaryColor,
+                                      color: kWhiteColor,
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.w900,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                          const SizedBox(
+                            width: 20,
+                          ),
+                        ],
                       ),
-                      myDropdown(),
-                    ],
+                    ], /////////////////wooorking here
                   ),
-                  const SizedBox(
-                    height: 10.0,
-                  ),
-                  buildInputForm('Amount', 'Enter amount', '',
-                      const Icon(Icons.phone_in_talk_outlined)),
-
-                  //******************DAte picker files */
-                  TextFormField(
-                    controller:
-                        dateinput, //editing controller of this TextField4
-
-                    decoration: const InputDecoration(
-                        icon: Icon(Icons.calendar_today), //icon of text field
-                        labelText: "Date yyyy/mm/dd" //label text of field
-                        ),
-                    readOnly:
-                        true, //set it true, so that user will not able to edit text
-                    onTap: () async {
-                      DateTime? pickedDate = await showDatePicker(
-                          context: context,
-                          initialDate: DateTime.now(),
-                          firstDate: DateTime(
-                              2000), //DateTime.now() - not to allow to choose before today.
-                          lastDate: DateTime(2101));
-
-                      if (pickedDate != null) {
-                        print(
-                            pickedDate); //pickedDate output format => 2021-03-10 00:00:00.000
-                        String formattedDate =
-                            DateFormat('yyyy-MM-dd').format(pickedDate);
-                        print(
-                            formattedDate); //formatted date output using intl package =>  2021-03-16
-                        //you can implement different kind of Date Format here according to your requirement
-
-                        setState(() {
-                          dateinput.text =
-                              formattedDate; //set output date to TextField value.
-                        });
-                      } else {
-                        print("Date is not selected");
-                      }
-                    },
-                  ),
-                  //********************End of date picker files */
-                ],
-              ),
-            ),
-
-            //Loan Tenure widgets
-            const SizedBox(
-              height: 20.0,
-            ),
-            //Submit button
-            Container(
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(16), color: kAmberColor),
-              width: MediaQuery.of(context).size.width * 0.5,
-              child: TextButton(
-                onPressed: () => {},
-                child: Text(
-                  'Submit',
-                  style: textButton.copyWith(color: kWhiteColor),
                 ),
+                const SizedBox(
+                  height: 20.0,
+                ),
+                Row(
+                  //Dropdown widget
+                  children: [
+                    Text(
+                      'Select Client ',
+                      style: subTitle.copyWith(fontWeight: FontWeight.normal),
+                    ),
+                    const SizedBox(
+                      width: 20,
+                    ),
+                    myDropdown(),
+                  ],
+                ),
+                const SizedBox(
+                  height: 10.0,
+                ),
+                buildInputForm('Amount', 'Enter amount', '',
+                    const Icon(Icons.phone_in_talk_outlined)),
+
+                //******************DAte picker files */
+                TextFormField(
+                  controller:
+                      dateinput, //editing controller of this TextField4
+
+                  decoration: const InputDecoration(
+                      icon: Icon(Icons.calendar_today), //icon of text field
+                      labelText: "Date yyyy/mm/dd" //label text of field
+                      ),
+                  readOnly:
+                      true, //set it true, so that user will not able to edit text
+                  onTap: () async {
+                    DateTime? pickedDate = await showDatePicker(
+                        context: context,
+                        initialDate: DateTime.now(),
+                        firstDate: DateTime(
+                            2000), //DateTime.now() - not to allow to choose before today.
+                        lastDate: DateTime(2101));
+
+                    if (pickedDate != null) {
+                      //pickedDate output format => 2021-03-10 00:00:00.000
+                      String formattedDate =
+                          DateFormat('yyyy-MM-dd').format(pickedDate);
+                      //formatted date output using intl package =>  2021-03-16
+                      //you can implement different kind of Date Format here according to your requirement
+
+                      setState(() {
+                        dateinput.text =
+                            formattedDate; //set output date to TextField value.
+                      });
+                    } else {
+                    }
+                  },
+                ),
+                //********************End of date picker files */
+              ],
+            ),
+          ),
+
+          //Loan Tenure widgets
+          const SizedBox(
+            height: 20.0,
+          ),
+          //Submit button
+          Container(
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(16), color: kAmberColor),
+            width: MediaQuery.of(context).size.width * 0.5,
+            child: TextButton(
+              onPressed: () => {},
+              child: Text(
+                'Submit',
+                style: textButton.copyWith(color: kWhiteColor),
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

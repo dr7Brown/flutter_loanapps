@@ -91,4 +91,31 @@ TextStyle kLargeFontStyle(Size size) => GoogleFonts.ubuntu(
 TextStyle kxLargeFontStyle(Size size) => GoogleFonts.ubuntu(
       fontSize: size.height * 0.080,
       fontWeight: FontWeight.bold,
+      
+    );
+
+//Body font sizes
+TextStyle kxSmallFontStyleBody(Size size) => GoogleFonts.ubuntu(
+      fontSize: size.height * 0.010,
+      fontWeight: FontWeight.normal,
+    );
+TextStyle kSmallFontStyleBody(Size size) => GoogleFonts.ubuntu(
+      fontSize: size.height * 0.020,
+      fontWeight: FontWeight.normal,
+    );
+TextStyle kNormalFontStyleBody(Size size) => GoogleFonts.ubuntu(
+      fontSize: size.height * 0.030,
+      fontWeight: FontWeight.normal,
+    );
+TextStyle kDefualtFontStyleBody(Size size) => GoogleFonts.ubuntu(
+      fontSize: size.height * 0.030,
+      fontWeight: FontWeight.normal,
+    );
+TextStyle kLargeFontStyleBody(Size size) => GoogleFonts.ubuntu(
+      fontSize: size.height * 0.050,
+      fontWeight: FontWeight.normal,
+    );
+TextStyle kxLargeFontStyleBody(Size size) => GoogleFonts.ubuntu(
+      fontSize: size.height * 0.060,
+      fontWeight: FontWeight.normal,
     );

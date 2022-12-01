@@ -28,9 +28,12 @@ class _DatePickerTextViewState extends State<DatePickerTextView> {
         controller: dateinput, //editing controller of this TextField4
 
         decoration: const InputDecoration(
-            prefixIcon: Icon(Icons.calendar_today), //icon of text field
-            labelText: "Date yyyy/mm/dd" //label text of field
-            ),
+          prefixIcon: Icon(Icons.calendar_today), //icon of text field
+          labelText: "Date yyyy/mm/dd", //label text of field
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.all(Radius.circular(15)),
+          ),
+        ),
         readOnly: true, //set it true, so that user will not able to edit text
         onTap: () async {
           DateTime? pickedDate = await showDatePicker(
@@ -52,7 +55,6 @@ class _DatePickerTextViewState extends State<DatePickerTextView> {
           }
         },
       ),
-     
     );
   }
 }

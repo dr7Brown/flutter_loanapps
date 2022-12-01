@@ -7,6 +7,8 @@ import 'package:loanapp/widgets/login_form.dart';
 import 'package:loanapp/widgets/primary_button.dart';
 
 class LoginScreen extends StatelessWidget {
+  const LoginScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,7 +51,7 @@ class LoginScreen extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => SignupScreen(),
+                              builder: (context) => const SignupScreen(),
                             ),
                           );
                         },
@@ -75,7 +77,7 @@ class LoginScreen extends StatelessWidget {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => ResetPasswordScreen()));
+                              builder: (context) => const ResetPasswordScreen()));
                     },
                     child: const Text(
                       'Forgot password?',

@@ -20,7 +20,7 @@ class _RadioBtnState extends State<RadioBtn> {
           'Gender',
           style: subTitle.copyWith(fontWeight: FontWeight.w600),
         ),
-        SizedBox(
+        const SizedBox(
           width: 10,
         ),
         Expanded(

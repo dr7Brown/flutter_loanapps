@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:loanapp/theme.dart';
 import 'package:loanapp/widgets/add_deposite_form.dart';
-import 'package:loanapp/widgets/primary_button.dart';
 
 class AddDepositeScreen extends StatelessWidget {
   const AddDepositeScreen({super.key});

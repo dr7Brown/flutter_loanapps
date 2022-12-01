@@ -9,10 +9,10 @@ class MyHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: ResponsiveLayout(
-        mobileBody: const MyMobileBody(),
-        desktopBody: const MyDesktopBody(),
+        mobileBody: MyMobileBody(),
+        desktopBody: MyDesktopBody(),
       ),
     );
   }

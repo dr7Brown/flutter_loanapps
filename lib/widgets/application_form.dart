@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:loanapp/widgets/radio.dart';
 
 class ApplicationForm extends StatefulWidget {
+  const ApplicationForm({super.key});
+
   @override
   State<ApplicationForm> createState() => _ApplicationFormState();
 }
@@ -13,15 +15,15 @@ class _ApplicationFormState extends State<ApplicationForm> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        buildInputForm('Full Name', false, Icon(Icons.person_outlined)),
+        buildInputForm('Full Name', false, const Icon(Icons.person_outlined)),
         //ID type //radio
-        RadioBtn(),
-        buildInputForm('ID Number', false, Icon(Icons.confirmation_number)),
-        buildInputForm('Phone', false, Icon(Icons.phone_in_talk_outlined)),
+        const RadioBtn(),
+        buildInputForm('ID Number', false, const Icon(Icons.confirmation_number)),
+        buildInputForm('Phone', false, const Icon(Icons.phone_in_talk_outlined)),
         //Marital status //dropdown   //Single/ married/ divorced/ other
-        buildInputForm('Address', false, Icon(Icons.add_home_work_sharp)),
+        buildInputForm('Address', false, const Icon(Icons.add_home_work_sharp)),
         //Gender //checkbox         //male/female
-        SizedBox(
+        const SizedBox(
           height: 10,
         ),
         Text(
@@ -29,13 +31,13 @@ class _ApplicationFormState extends State<ApplicationForm> {
           style: subTitle.copyWith(fontWeight: FontWeight.w600),
           //textAlign: TextAlign.left,
         ),
-        SizedBox(
+        const SizedBox(
           height: 10,
         ),
         //Loan details
-        buildInputForm('Loan Amount', false, Icon(Icons.countertops)),
-        buildInputForm('Rate', false, Icon(Icons.rate_review_rounded)),
-        buildInputForm('Duration', false, Icon(Icons.timelapse)), //months only
+        buildInputForm('Loan Amount', false, const Icon(Icons.countertops)),
+        buildInputForm('Rate', false, const Icon(Icons.rate_review_rounded)),
+        buildInputForm('Duration', false, const Icon(Icons.timelapse)), //months only
         //Repayment Terms //dropdown
         Row(
           children: [
@@ -43,7 +45,7 @@ class _ApplicationFormState extends State<ApplicationForm> {
               'Loan Terms',
               style: subTitle.copyWith(fontWeight: FontWeight.normal),
             ),
-            SizedBox(
+            const SizedBox(
               width: 20,
             ),
             myDropdown(),

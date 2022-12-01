@@ -2,6 +2,8 @@ import 'package:loanapp/theme.dart';
 import 'package:flutter/material.dart';
 
 class LogInForm extends StatefulWidget {
+  const LogInForm({super.key});
+
   @override
   State<LogInForm> createState() => _LogInFormState();
 }
@@ -12,8 +14,8 @@ class _LogInFormState extends State<LogInForm> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        buildInputForm('Username', false, Icon(Icons.alternate_email_rounded)),
-        buildInputForm('Password', true, Icon(Icons.lock)),
+        buildInputForm('Username', false, const Icon(Icons.alternate_email_rounded)),
+        buildInputForm('Password', true, const Icon(Icons.lock)),
       ],
     );
   }

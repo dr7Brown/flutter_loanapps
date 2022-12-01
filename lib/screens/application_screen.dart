@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:loanapp/container_navigation.dart';
-import 'package:loanapp/screens/login/login_screen.dart';
-import 'package:loanapp/screens/repayment_screen.dart';
 import 'package:loanapp/theme.dart';
 import 'package:loanapp/widgets/application_form.dart';
 import 'package:loanapp/widgets/primary_button.dart';
