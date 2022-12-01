@@ -214,7 +214,8 @@ class _LoanApplicationScreenState extends State<LoanApplicationScreen> {
                     style: kTextFormFieldStyle(),
                     decoration: const InputDecoration(
                       prefixIcon: Icon(Icons.person),
-                      hintText: 'Full Name',
+                      // hintText: 'Full Name',
+                      labelText: "Full Name",
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(15)),
                       ),
@@ -248,7 +249,8 @@ class _LoanApplicationScreenState extends State<LoanApplicationScreen> {
                     style: kTextFormFieldStyle(),
                     decoration: const InputDecoration(
                       prefixIcon: Icon(Icons.phone),
-                      hintText: 'Phone Number',
+                      // hintText: 'Phone Number',
+                      labelText: "Phone Number",
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(15)),
                       ),
@@ -276,7 +278,8 @@ class _LoanApplicationScreenState extends State<LoanApplicationScreen> {
                     style: kTextFormFieldStyle(),
                     decoration: const InputDecoration(
                       prefixIcon: Icon(Icons.account_box),
-                      hintText: 'ID Number',
+                      // hintText: 'ID Number',
+                      labelText: "ID Number",
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(15)),
                       ),
@@ -319,7 +322,8 @@ class _LoanApplicationScreenState extends State<LoanApplicationScreen> {
                     style: kTextFormFieldStyle(),
                     decoration: const InputDecoration(
                       prefixIcon: Icon(Icons.attach_money),
-                      hintText: 'Loan Amount',
+                      // hintText: 'Loan Amount',
+                      labelText: 'Loan Amount',
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(15)),
                       ),
@@ -343,7 +347,7 @@ class _LoanApplicationScreenState extends State<LoanApplicationScreen> {
                     style: kTextFormFieldStyle(),
                     decoration: const InputDecoration(
                       prefixIcon: Icon(Icons.timeline),
-                      hintText: 'Interest Rate',
+                      labelText: 'Interest Rate',
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(15)),
                       ),
@@ -388,7 +392,7 @@ class _LoanApplicationScreenState extends State<LoanApplicationScreen> {
                     style: kTextFormFieldStyle(),
                     decoration: const InputDecoration(
                       prefixIcon: Icon(Icons.timer),
-                      hintText: 'Durations',
+                      labelText: 'Durations',
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(15)),
                       ),
@@ -431,7 +435,7 @@ class _LoanApplicationScreenState extends State<LoanApplicationScreen> {
                     style: kTextFormFieldStyle(),
                     decoration: const InputDecoration(
                       prefixIcon: Icon(Icons.person),
-                      hintText: 'Guarantor',
+                      labelText: 'Guarantor',
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(15)),
                       ),
