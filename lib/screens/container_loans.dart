@@ -16,14 +16,36 @@ class PayDepoContainer extends StatefulWidget {
 
 class _PayDepoContainerState extends State<PayDepoContainer> {
   int index = 0;
+/*
+  late TabController tabController;
+
+  @override
+  void initState() {
+    super.initState();
+    tabController = TabController(
+      initialIndex: 0,
+      length: 3,
+      vsync: this,
+    );
+  }
+ 
+
+  @override
+  void dispose() {
+    tabController.dispose();
+    super.dispose();
+  }
+ */
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: DefaultTabController(
+    return Scaffold(
+      body: DefaultTabController(
         length: 3,
         child: Scaffold(
           appBar: AppBar(
-            bottom: const TabBar(
+            //flexibleSpace: ,
+            title: const TabBar(
+              
               tabs: [
                 Tab(text: 'Repayments' /*icon: Icon(Icons.directions_car)*/),
                 Tab(
@@ -34,7 +56,8 @@ class _PayDepoContainerState extends State<PayDepoContainer> {
                 ),
               ],
             ),
-            title: const Text('Loan Us'),
+            automaticallyImplyLeading: false,
+            //title: const Text('Loan Us'),
             backgroundColor: kPrimaryColor,
           ),
           body: const TabBarView(

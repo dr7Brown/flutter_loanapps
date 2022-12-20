@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:loanapp/screens/container_reports.dart';
 import 'package:loanapp/screens/dashboard.dart';
-import 'package:loanapp/screens/payment_container.dart';
-import 'package:loanapp/screens/views/loan_application_view.dart';
+import 'package:loanapp/screens/loan_clients.dart';
+import 'package:loanapp/screens/container_loans.dart';
 import 'package:loanapp/theme.dart';
-import 'package:loanapp/myhomepage.dart';
 
 class ContainerMainNav extends StatefulWidget {
   const ContainerMainNav({super.key});
@@ -25,8 +25,8 @@ class _ContainerMainNavState extends State<ContainerMainNav> {
         children: const [
           DashboardWidget(),
           PayDepoContainer(),
-          LoanApplicationScreen(),
-          MyHomePage(),
+          LoanClients(),
+          ReportsContainer()
         ],
       ),
       bottomNavigationBar: Container(

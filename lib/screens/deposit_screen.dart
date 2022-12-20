@@ -30,14 +30,16 @@ class _DepositScreenState extends State<DepositScreen> {
       floatingActionButton:
           Column(mainAxisAlignment: MainAxisAlignment.end, children: [
         FloatingActionButton.extended(
+          heroTag: "expenses",
           icon: const Icon(Icons.add),
           backgroundColor: kAmberColor,
           label: const Text('Add Expense'),
           onPressed: () {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => const AddExpensesScreen()));
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const AddExpensesScreen()));
           },
-          heroTag: null,
         ),
         const SizedBox(
           height: 10,
@@ -45,12 +47,14 @@ class _DepositScreenState extends State<DepositScreen> {
         FloatingActionButton.extended(
           icon: const Icon(Icons.add),
           onPressed: () => {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => const AddDepositeScreen()))
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const AddDepositeScreen()))
           },
           backgroundColor: kcolormix,
           label: const Text('Add Deposit'),
-          heroTag: null,
+          heroTag: 'deposit_fab',
         )
       ]),
       body: Padding(
@@ -75,8 +79,8 @@ class _DepositScreenState extends State<DepositScreen> {
             groupBy: (element) => element['group'],
             groupComparator: (value1, value2) => value2.compareTo(
                 value1), //change orders of group to sort alphabetically
-            itemComparator: (item1, item2) => item1['name'].compareTo(item2[
-                'name']), //change orders of items to sort alphabetically
+            itemComparator: (item1, item2) => item1['name'].compareTo(
+                item2['name']), //change orders of items to sort alphabetically
             order: GroupedListOrder.DESC,
             useStickyGroupSeparators: true,
             groupSeparatorBuilder: (String value) => Container(
@@ -96,8 +100,8 @@ class _DepositScreenState extends State<DepositScreen> {
             itemBuilder: (c, element) {
               return Card(
                 elevation: 4.0,
-                margin: const EdgeInsets.symmetric(
-                    horizontal: 10.0, vertical: 6.0),
+                margin:
+                    const EdgeInsets.symmetric(horizontal: 10.0, vertical: 6.0),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[

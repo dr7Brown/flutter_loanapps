@@ -3,7 +3,6 @@ import 'package:loanapp/container_navigation.dart';
 import 'package:loanapp/screens/dashboard.dart';
 import 'package:loanapp/screens/views/login_view.dart';
 import 'package:loanapp/screens/views/signup_view.dart';
-import 'myhomepage.dart';
 
 void main() {
   runApp(const MyApp());
@@ -28,7 +27,6 @@ class _MyAppState extends State<MyApp> {
         '/': (context) => const ContainerMainNav(),
         '/login': (context) => const LoginView(),
         '/signup': (context) => const SignUpView(),
-        '/myhomepage': (context) => const MyHomePage(),
         '/dashboard': (context) => const DashboardWidget(),
         '/container_navigation': (context) => const ContainerMainNav(),
       },

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:grouped_list/grouped_list.dart';
-import 'package:loanapp/screens/application_screen.dart';
+import 'package:loanapp/screens/container_loanclient.dart';
 import 'package:loanapp/theme.dart';
 
 class PaymentScreen extends StatefulWidget {
@@ -15,13 +15,31 @@ class _PaymentScreenState extends State<PaymentScreen> {
   bool ischecked = false;
   final List _elements = [
     {'group': 'Nov 11', 'name': 'Evans'},
-    {'group': 'Team A', 'name': 'Evans'},
-    {'group': 'Team A', 'name': 'Evans'},
-    {'group': 'Team B', 'name': 'Evans'},
-    {'group': 'Team B', 'name': 'Evans'},
-    {'group': 'Team c', 'name': 'Evans'},
-    {'group': 'Team c', 'name': 'Evans'},
-    {'group': 'Team c', 'name': 'Evans'},
+    {'group': '1 Jan 2022', 'name': 'Evans'},
+    {'group': '1 Jan 2022', 'name': 'Evans'},
+    {'group': '1 Jan 2022', 'name': 'Evans'},
+    {'group': '1 Jan 2022', 'name': 'Evans'},
+    {'group': '4 Jan 2022', 'name': 'Evans'},
+    {'group': '4 Jan 2022', 'name': 'Evans'},
+    {'group': '4 Jan 2022', 'name': 'Evans'},
+    {'group': '9 Jan 2022', 'name': 'Evans'},
+    {'group': '9 Jan 2022', 'name': 'Evans'},
+    {'group': '9 Jan 2022', 'name': 'Evans'},
+    {'group': '9 Jan 2022', 'name': 'Evans'},
+    {'group': '9 Jan 2022', 'name': 'Evans'},
+    {'group': '9 Jan 2022', 'name': 'Evans'},
+    {'group': '9 Jan 2022', 'name': 'Evans'},
+    {'group': '9 Jan 2022', 'name': 'Evans'},
+    {'group': '27 June 2022', 'name': 'Evans'},
+    {'group': '27 June 2022', 'name': 'Evans'},
+    {'group': '27 June 2022', 'name': 'Evans'},
+    {'group': '27 June 2022', 'name': 'Evans'},
+    {'group': '16 Aug 2022', 'name': 'Evans'},
+    {'group': '16 Aug 2022', 'name': 'Evans'},
+    {'group': '16 Aug 2022', 'name': 'Evans'},
+    {'group': '16 Sep 2022', 'name': 'Evans'},
+    {'group': '6 Dec 2022', 'name': 'Evans'},
+    {'group': '8 Dec 2022', 'name': 'Evans'},
   ];
   @override
   Widget build(BuildContext context) {
@@ -29,8 +47,10 @@ class _PaymentScreenState extends State<PaymentScreen> {
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
           // Add your onPressed code here!
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => const ApplicationScreen()));
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => const LoanClientsContainer()));
         },
         label: const Text('Request Loan'),
         icon: const Icon(Icons.add),
@@ -88,8 +108,8 @@ class _PaymentScreenState extends State<PaymentScreen> {
                           horizontal: 20.0, vertical: 10.0),
                       leading: const Icon(Icons.account_circle),
                       title: Text(element['name']),
-                      trailing:
-                          const Text('GHC 2000'), //const Icon(Icons.arrow_forward),
+                      trailing: const Text(
+                          'GHC 2000'), //const Icon(Icons.arrow_forward),
                       onTap: () {
                         /*    */
                       },

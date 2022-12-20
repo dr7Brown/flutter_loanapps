@@ -4,7 +4,8 @@ import 'package:google_fonts/google_fonts.dart';
 //const kPrimaryColor = Color.fromARGB(182, 2, 1, 33);
 const kPrimaryColor = Color.fromARGB(255, 2, 1, 33);
 const kSecondaryColor = Color.fromARGB(255, 139, 149, 165);
-const kDarkGreyColor = Color(0xFFA8A8A8);
+const kGreyDarkColor = Color(0xFFA8A8A8);
+const kGreyLightColor = Color.fromARGB(255, 209, 204, 204);
 const kWhiteColor = Color(0xFFFFFFFF);
 const Color kAmbeziColor = Color(0xFF5B5B5B);
 const kBlackColor = Color(0xFF272726);
@@ -19,7 +20,7 @@ const hoverColor = Colors.transparent;
 const kGreenColor = Color.fromARGB(219, 41, 133, 5);
 const kAmberColor = Color.fromARGB(219, 223, 40, 40);
 const kAmberTransColor = Color.fromARGB(113, 208, 17, 62);
-const kPurpleDeepColor = Color.fromARGB(255, 124, 77, 255);
+const kBlueColor = Color.fromARGB(255, 36, 4, 126);
 
 //Paddings
 const ksmallPadding = EdgeInsets.symmetric(horizontal: 20);
@@ -39,6 +40,14 @@ TextStyle textButton = const TextStyle(
 TextStyle listViewText = const TextStyle(
     color: kWhiteColor, fontSize: 20, fontWeight: FontWeight.w700);
 
+TextStyle ksmallTextSize = const TextStyle(
+    color: kSecondaryColor, fontSize: 18, fontWeight: FontWeight.w500);
+TextStyle knormalTextSize = const TextStyle(
+    color: kSecondaryColor, fontSize: 18, fontWeight: FontWeight.w500);
+TextStyle klargeTextSize = const TextStyle(
+    color: kSecondaryColor, fontSize: 18, fontWeight: FontWeight.w500);
+TextStyle kxLargeTextSize = const TextStyle(
+    color: kSecondaryColor, fontSize: 18, fontWeight: FontWeight.w500);
 //
 
 TextStyle kLoginTitleStyle(Size size) => GoogleFonts.ubuntu(
@@ -91,7 +100,6 @@ TextStyle kLargeFontStyle(Size size) => GoogleFonts.ubuntu(
 TextStyle kxLargeFontStyle(Size size) => GoogleFonts.ubuntu(
       fontSize: size.height * 0.080,
       fontWeight: FontWeight.bold,
-      
     );
 
 //Body font sizes
@@ -117,5 +125,10 @@ TextStyle kLargeFontStyleBody(Size size) => GoogleFonts.ubuntu(
     );
 TextStyle kxLargeFontStyleBody(Size size) => GoogleFonts.ubuntu(
       fontSize: size.height * 0.060,
+      fontWeight: FontWeight.normal,
+    );
+
+TextStyle kBankStatementFont(Size size) => GoogleFonts.rhodiumLibre(
+      fontSize: size.height * 0.030,
       fontWeight: FontWeight.normal,
     );

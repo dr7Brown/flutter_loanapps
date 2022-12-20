@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:grouped_list/grouped_list.dart';
-import 'package:loanapp/screens/add_repayment_screen.dart';
+import 'package:loanapp/screens/add_repayment_screen_fab.dart';
 import 'package:loanapp/theme.dart';
 
 class RepaymentScreen extends StatefulWidget {
@@ -15,14 +15,33 @@ class _RepaymentScreenState extends State<RepaymentScreen> {
   bool ischecked = false;
   final List _elements = [
     {'group': 'Nov 11', 'name': 'Evans'},
-    {'group': 'Team A', 'name': 'Evans'},
-    {'group': 'Team A', 'name': 'Evans'},
-    {'group': 'Team B', 'name': 'Evans'},
-    {'group': 'Team B', 'name': 'Evans'},
-    {'group': 'Team c', 'name': 'Evans'},
-    {'group': 'Team c', 'name': 'Evans'},
-    {'group': 'Team c', 'name': 'Evans'},
+    {'group': '1 Jan 2022', 'name': 'Evans'},
+    {'group': '1 Jan 2022', 'name': 'Evans'},
+    {'group': '1 Jan 2022', 'name': 'Evans'},
+    {'group': '1 Jan 2022', 'name': 'Evans'},
+    {'group': '4 Jan 2022', 'name': 'Evans'},
+    {'group': '4 Jan 2022', 'name': 'Evans'},
+    {'group': '4 Jan 2022', 'name': 'Evans'},
+    {'group': '9 Jan 2022', 'name': 'Evans'},
+    {'group': '9 Jan 2022', 'name': 'Evans'},
+    {'group': '9 Jan 2022', 'name': 'Evans'},
+    {'group': '9 Jan 2022', 'name': 'Evans'},
+    {'group': '9 Jan 2022', 'name': 'Evans'},
+    {'group': '9 Jan 2022', 'name': 'Evans'},
+    {'group': '9 Jan 2022', 'name': 'Evans'},
+    {'group': '9 Jan 2022', 'name': 'Evans'},
+    {'group': '27 June 2022', 'name': 'Evans'},
+    {'group': '27 June 2022', 'name': 'Evans'},
+    {'group': '27 June 2022', 'name': 'Evans'},
+    {'group': '27 June 2022', 'name': 'Evans'},
+    {'group': '16 Aug 2022', 'name': 'Evans'},
+    {'group': '16 Aug 2022', 'name': 'Evans'},
+    {'group': '16 Aug 2022', 'name': 'Evans'},
+    {'group': '16 Sep 2022', 'name': 'Evans'},
+    {'group': '6 Dec 2022', 'name': 'Evans'},
+    {'group': '8 Dec 2022', 'name': 'Evans'},
   ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -104,7 +123,7 @@ class _RepaymentScreenState extends State<RepaymentScreen> {
                           const Text(
                             'Last five repayments',
                             style: TextStyle(
-                              color: kDarkGreyColor,
+                              color: kGreyDarkColor,
                               fontStyle: FontStyle.italic,
                               fontSize: 15,
                             ),
