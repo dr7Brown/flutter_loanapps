@@ -25,6 +25,7 @@ class _LoanApplicationScreenState extends State<LoanApplicationScreen> {
   String? termsOfLoan = "Weekly"; //Values are: Weekly, Bi Weekly, Monthly
   TextEditingController durationController = TextEditingController();
   TextEditingController firstRepaymentDateController = TextEditingController();
+  TextEditingController accNumberController = TextEditingController();
   TextEditingController dateController = TextEditingController();
   TextEditingController guarantorController = TextEditingController();
 
@@ -41,6 +42,7 @@ class _LoanApplicationScreenState extends State<LoanApplicationScreen> {
   String? mTerms;
   int mDuration = 0;
   String? mFirstRepaymentDate;
+  String? mAccNumber = '';
   String? mDate;
   String mGuarantor = '';
 
@@ -56,9 +58,13 @@ class _LoanApplicationScreenState extends State<LoanApplicationScreen> {
   int biweek_days = 14;
   List repaymentDates = [];
 
+  //Others
+  late FocusNode genAccNumFocus;
+
   @override
   void initState() {
     super.initState();
+    genAccNumFocus = FocusNode();
     firstRepaymentDateController.text =
         "${DateTime.now().toLocal()}".split(' ')[0];
 
@@ -83,8 +89,10 @@ class _LoanApplicationScreenState extends State<LoanApplicationScreen> {
     termsOfLoan = "Weekly"; //Default value
     durationController.dispose();
     firstRepaymentDateController.dispose();
+    accNumberController.dispose();
     dateController.dispose();
     guarantorController.dispose();
+    genAccNumFocus.dispose();
   }
 
   // Initial Selected Value
@@ -203,334 +211,371 @@ class _LoanApplicationScreenState extends State<LoanApplicationScreen> {
     SimpleUIController simpleUIController,
   ) {
     return SingleChildScrollView(
-      child: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(left: 20.0, right: 20),
-            child: Form(
-              key: _formKey,
-              child: Column(
+      child: Padding(
+        padding: const EdgeInsets.only(left: 20.0, right: 20),
+        child: Form(
+          key: _formKey,
+          child: Column(
+            children: [
+              SizedBox(
+                height: size.height * 0.01,
+              ),
+              Text(
+                'Personal Details',
+                style: kDefualtFontStyleBody(size),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+
+              /// Full name
+              TextFormField(
+                style: kTextFormFieldStyle(),
+                decoration: const InputDecoration(
+                  prefixIcon: Icon(Icons.person),
+                  // hintText: 'Full Name',
+                  labelText: "Full Name",
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(15)),
+                  ),
+                ),
+                controller: nameController,
+                // The validator receives the text that the user has entered.
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please enter full name';
+                  } else if (value.length < 4) {
+                    return 'Name too short';
+                  } else if (value.length > 25) {
+                    return 'maximum character is 25';
+                  }
+                  return null;
+                },
+              ),
+
+              //vertical space
+              SizedBox(
+                height: size.height * 0.01,
+              ),
+
+              //Gender
+              radioBtnGender(),
+
+              //Phone
+              TextFormField(
+                //keyboardType: TextInputType.phone,
+                style: kTextFormFieldStyle(),
+                keyboardType: TextInputType.number,
+                inputFormatters: <TextInputFormatter>[
+                  FilteringTextInputFormatter.allow((RegExp("[+0-9]"))),
+                ],
+                decoration: const InputDecoration(
+                  prefixIcon: Icon(Icons.phone),
+                  // hintText: 'Phone Number',
+                  labelText: "Phone Number",
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(15)),
+                  ),
+                ),
+                controller: phoneController,
+                // The validator receives the text that the user has entered.
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please enter Phone number';
+                  } else if (value.length < 10) {
+                    return 'Invalid Phone Number';
+                  } else if (value.length > 14) {
+                    return 'Invalid Phone Number';
+                  }
+                  return null;
+                },
+              ),
+
+              //vertical space
+              SizedBox(
+                height: size.height * 0.01,
+              ),
+              //id
+              TextFormField(
+                style: kTextFormFieldStyle(),
+                decoration: const InputDecoration(
+                  prefixIcon: Icon(Icons.account_box),
+                  // hintText: 'ID Number',
+                  labelText: "ID Number",
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(15)),
+                  ),
+                ),
+                controller: idController,
+                // The validator receives the text that the user has entered.
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please enter ID Number';
+                  } else if (value.length < 6) {
+                    return 'Number Invalid';
+                  } else if (value.length > 13) {
+                    return 'Number Invalid';
+                  }
+                  return null;
+                },
+              ),
+
+              //id type
+              radioBtnID(),
+
+              //vertical space
+              SizedBox(
+                height: size.height * 0.01,
+              ),
+
+              //Address
+              TextFormField(
+                style: kTextFormFieldStyle(),
+                decoration: const InputDecoration(
+                  prefixIcon: Icon(Icons.location_city),
+                  labelText: "Location/ Address",
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(15)),
+                  ),
+                ),
+                controller: addressController,
+                // The validator receives the text that the user has entered.
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please enter Address';
+                  } else if (value.length < 2) {
+                    return 'Address Invalid';
+                  }
+                  return null;
+                },
+              ),
+
+              //vertical space
+              SizedBox(
+                height: size.height * 0.10,
+              ),
+
+              //Loan details
+              Text(
+                'Loan Details',
+                style: kDefualtFontStyleBody(size),
+              ),
+
+              //vertical space
+              SizedBox(
+                height: size.height * 0.02,
+              ),
+
+              //amount
+              TextFormField(
+                style: kTextFormFieldStyle(),
+                keyboardType: TextInputType.number,
+                inputFormatters: <TextInputFormatter>[
+                  FilteringTextInputFormatter.allow((RegExp("[.,0-9]"))),
+                ],
+                decoration: const InputDecoration(
+                  prefixIcon: Icon(Icons.attach_money),
+                  // hintText: 'Loan Amount',
+                  labelText: 'Loan Amount',
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(15)),
+                  ),
+                ),
+                controller: amountController,
+                // The validator receives the text that the user has entered.
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please enter Amount';
+                  }
+                  return null;
+                },
+              ),
+              //vertical space
+              SizedBox(
+                height: size.height * 0.01,
+              ),
+
+              //rate
+              TextFormField(
+                style: kTextFormFieldStyle(),
+                keyboardType: TextInputType.number,
+                inputFormatters: <TextInputFormatter>[
+                  FilteringTextInputFormatter.allow((RegExp("[.,0-9]"))),
+                ],
+                decoration: const InputDecoration(
+                  prefixIcon: Icon(Icons.timeline),
+                  labelText: 'Interest Rate',
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(15)),
+                  ),
+                ),
+                controller: rateController,
+                // The validator receives the text that the user has entered.
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please enter interest rate';
+                  }
+                  return null;
+                },
+              ),
+              //vertical space
+              SizedBox(
+                height: size.height * 0.01,
+              ),
+
+              //Loan terms
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  SizedBox(
-                    height: size.height * 0.01,
-                  ),
                   Text(
-                    'Personal Details',
+                    'Loan Terms',
                     style: kDefualtFontStyleBody(size),
                   ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-
-                  /// Full name
-                  TextFormField(
-                    style: kTextFormFieldStyle(),
-                    decoration: const InputDecoration(
-                      prefixIcon: Icon(Icons.person),
-                      // hintText: 'Full Name',
-                      labelText: "Full Name",
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(15)),
-                      ),
-                    ),
-                    controller: nameController,
-                    // The validator receives the text that the user has entered.
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Please enter full name';
-                      } else if (value.length < 4) {
-                        return 'Name too short';
-                      } else if (value.length > 25) {
-                        return 'maximum character is 25';
-                      }
-                      return null;
-                    },
-                  ),
-
-                  //vertical space
+                  //horizontal space
                   SizedBox(
-                    height: size.height * 0.01,
+                    width: size.width * 0.10,
                   ),
+                  myDropdown(),
+                ],
+              ),
 
-                  //Gender
-                  radioBtnGender(),
+              //vertical space
+              SizedBox(
+                height: size.height * 0.01,
+              ),
 
-                  //Phone
-                  TextFormField(
-                    //keyboardType: TextInputType.phone,
-                    style: kTextFormFieldStyle(),
-                    keyboardType: TextInputType.number,
-                    inputFormatters: <TextInputFormatter>[
-                      FilteringTextInputFormatter.allow((RegExp("[+0-9]"))),
-                    ],
-                    decoration: const InputDecoration(
-                      prefixIcon: Icon(Icons.phone),
-                      // hintText: 'Phone Number',
-                      labelText: "Phone Number",
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(15)),
-                      ),
-                    ),
-                    controller: phoneController,
-                    // The validator receives the text that the user has entered.
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Please enter Phone number';
-                      } else if (value.length < 10) {
-                        return 'Invalid Phone Number';
-                      } else if (value.length > 14) {
-                        return 'Invalid Phone Number';
-                      }
-                      return null;
-                    },
+              // duration
+              TextFormField(
+                style: kTextFormFieldStyle(),
+                decoration: const InputDecoration(
+                  prefixIcon: Icon(Icons.timer),
+                  labelText: 'Durations (Months)',
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(15)),
                   ),
+                ),
+                controller: durationController,
+                // The validator receives the text that the user has entered.
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please enter duration of loan';
+                  }
+                  return null;
+                },
+              ),
+              //vertical space
+              SizedBox(
+                height: size.height * 0.02,
+              ),
 
-                  //vertical space
+              //date
+              FirstRepaymtDateWidgetTextView(),
+
+              //vertical space
+              SizedBox(
+                height: size.height * 0.10,
+              ),
+
+              //Loan details++++++++++++++++++++++++++++++++++++++++++++++++++++++
+              Text(
+                'Official Use Only',
+                style: kDefualtFontStyleBody(size),
+              ),
+              //vertical space
+              SizedBox(
+                height: size.height * 0.02,
+              ),
+
+              //Account Number
+              TextFormField(
+                style: kTextFormFieldStyle(),
+                focusNode: genAccNumFocus,
+                decoration: const InputDecoration(
+                  prefixIcon: Icon(Icons.account_box),
+                  labelText: 'Account Number',
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(15)),
+                  ),
+                ),
+                readOnly: true,
+                controller: guarantorController,
+                // The validator receives the text that the user has entered.
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Account Number required';
+                  } else if (value.length != 13) {
+                    return 'Account Number invalid';
+                  }
+                  return null;
+                },
+              ),
+              SizedBox(
+                height: size.width * 0.01,
+              ),
+              //Loan terms
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  generateAccNumberButton(),
                   SizedBox(
-                    height: size.height * 0.01,
-                  ),
-                  //id
-                  TextFormField(
-                    style: kTextFormFieldStyle(),
-                    decoration: const InputDecoration(
-                      prefixIcon: Icon(Icons.account_box),
-                      // hintText: 'ID Number',
-                      labelText: "ID Number",
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(15)),
-                      ),
-                    ),
-                    controller: idController,
-                    // The validator receives the text that the user has entered.
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Please enter ID Number';
-                      } else if (value.length < 6) {
-                        return 'Number Invalid';
-                      } else if (value.length > 13) {
-                        return 'Number Invalid';
-                      }
-                      return null;
-                    },
-                  ),
-
-                  //id type
-                  radioBtnID(),
-
-                  //vertical space
-                  SizedBox(
-                    height: size.height * 0.01,
-                  ),
-
-                  //Address
-                  TextFormField(
-                    style: kTextFormFieldStyle(),
-                    decoration: const InputDecoration(
-                      prefixIcon: Icon(Icons.location_city),
-                      labelText: "Location/ Address",
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(15)),
-                      ),
-                    ),
-                    controller: addressController,
-                    // The validator receives the text that the user has entered.
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Please enter Address';
-                      } else if (value.length < 2) {
-                        return 'Address Invalid';
-                      }
-                      return null;
-                    },
-                  ),
-
-                  //vertical space
-                  SizedBox(
-                    height: size.height * 0.10,
-                  ),
-
-                  //Loan details
-                  Text(
-                    'Loan Details',
-                    style: kDefualtFontStyleBody(size),
-                  ),
-
-                  //vertical space
-                  SizedBox(
-                    height: size.height * 0.02,
-                  ),
-
-                  //amount
-                  TextFormField(
-                    style: kTextFormFieldStyle(),
-                    keyboardType: TextInputType.number,
-                    inputFormatters: <TextInputFormatter>[
-                      FilteringTextInputFormatter.allow((RegExp("[.,0-9]"))),
-                    ],
-                    decoration: const InputDecoration(
-                      prefixIcon: Icon(Icons.attach_money),
-                      // hintText: 'Loan Amount',
-                      labelText: 'Loan Amount',
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(15)),
-                      ),
-                    ),
-                    controller: amountController,
-                    // The validator receives the text that the user has entered.
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Please enter Amount';
-                      }
-                      return null;
-                    },
-                  ),
-                  //vertical space
-                  SizedBox(
-                    height: size.height * 0.01,
-                  ),
-
-                  //rate
-                  TextFormField(
-                    style: kTextFormFieldStyle(),
-                    keyboardType: TextInputType.number,
-                    inputFormatters: <TextInputFormatter>[
-                      FilteringTextInputFormatter.allow((RegExp("[.,0-9]"))),
-                    ],
-                    decoration: const InputDecoration(
-                      prefixIcon: Icon(Icons.timeline),
-                      labelText: 'Interest Rate',
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(15)),
-                      ),
-                    ),
-                    controller: rateController,
-                    // The validator receives the text that the user has entered.
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Please enter interest rate';
-                      }
-                      return null;
-                    },
-                  ),
-                  //vertical space
-                  SizedBox(
-                    height: size.height * 0.01,
-                  ),
-
-                  //Loan terms
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Loan Terms',
-                        style: kDefualtFontStyleBody(size),
-                      ),
-                      //horizontal space
-                      SizedBox(
-                        width: size.width * 0.10,
-                      ),
-                      myDropdown(),
-                    ],
-                  ),
-
-                  //vertical space
-                  SizedBox(
-                    height: size.height * 0.01,
-                  ),
-
-                  // duration
-                  TextFormField(
-                    style: kTextFormFieldStyle(),
-                    decoration: const InputDecoration(
-                      prefixIcon: Icon(Icons.timer),
-                      labelText: 'Durations (Months)',
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(15)),
-                      ),
-                    ),
-                    controller: durationController,
-                    // The validator receives the text that the user has entered.
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Please enter duration of loan';
-                      }
-                      return null;
-                    },
-                  ),
-                  //vertical space
-                  SizedBox(
-                    height: size.height * 0.02,
-                  ),
-
-                  //date
-                  FirstRepaymtDateWidgetTextView(),
-
-                  //vertical space
-                  SizedBox(
-                    height: size.height * 0.10,
-                  ),
-
-                  //Loan details++++++++++++++++++++++++++++++++++++++++++++++++++++++
-                  Text(
-                    'Official Use Only',
-                    style: kDefualtFontStyleBody(size),
-                  ),
-                  //vertical space
-                  SizedBox(
-                    height: size.height * 0.02,
-                  ),
-
-                  //date
-                  DateOfApplicationWidgetTextView(),
-
-                  //vertical space
-                  SizedBox(
-                    height: size.height * 0.01,
-                  ),
-
-                  //gurantor
-                  TextFormField(
-                    style: kTextFormFieldStyle(),
-                    decoration: const InputDecoration(
-                      prefixIcon: Icon(Icons.person),
-                      labelText: 'Guarantor',
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(15)),
-                      ),
-                    ),
-                    controller: guarantorController,
-                    // The validator receives the text that the user has entered.
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Please enter full name';
-                      } else if (value.length < 4) {
-                        return 'Name too short';
-                      } else if (value.length > 25) {
-                        return 'maximum character is 25';
-                      }
-                      return null;
-                    },
-                  ),
-
-                  SizedBox(
-                    height: size.height * 0.01,
-                  ),
-
-                  SizedBox(
-                    height: size.height * 0.05,
-                  ),
-
-                  /// Login Button
-                  submitButton(),
-
-                  SizedBox(
-                    height: size.height * 0.03,
+                    width: size.width * 0.01,
                   ),
                 ],
               ),
-            ),
+
+              SizedBox(
+                height: size.height * 0.02,
+              ),
+
+              //date
+              DateOfApplicationWidgetTextView(),
+
+              //vertical space
+              SizedBox(
+                height: size.height * 0.01,
+              ),
+
+              //gurantor
+              TextFormField(
+                style: kTextFormFieldStyle(),
+                decoration: const InputDecoration(
+                  prefixIcon: Icon(Icons.person),
+                  labelText: 'Guarantor',
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(15)),
+                  ),
+                ),
+                controller: guarantorController,
+                // The validator receives the text that the user has entered.
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please enter full name';
+                  } else if (value.length < 4) {
+                    return 'Name too short';
+                  } else if (value.length > 25) {
+                    return 'maximum character is 25';
+                  }
+                  return null;
+                },
+              ),
+
+              SizedBox(
+                height: size.height * 0.01,
+              ),
+
+              SizedBox(
+                height: size.height * 0.05,
+              ),
+
+              /// Login Button
+              submitButton(),
+
+              SizedBox(
+                height: size.height * 0.03,
+              ),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }
@@ -710,6 +755,43 @@ class _LoanApplicationScreenState extends State<LoanApplicationScreen> {
             Text(
               'Submit Request',
               style: kDefualtFontStyleBody(size),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget generateAccNumberButton() {
+    return SizedBox(
+      //width: 30,
+      height: 30,
+      child: ElevatedButton(
+        style: ButtonStyle(
+          backgroundColor: MaterialStateProperty.all(kGreyDarkColor),
+          shape: MaterialStateProperty.all(
+            RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(0),
+            ),
+          ),
+        ),
+        onPressed: () {
+          genAccNumFocus.requestFocus();
+          //0 show progress indicator
+          //1 Get last acc number
+          //2. Increase by 1
+          //3. Display new Acc num
+          //4. Dismiss progress indicator
+        },
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const SizedBox(
+              width: 10,
+            ),
+            Text(
+              'Generate Account Number',
+              style: kDefualtFontStyleBody(size * 0.8),
             ),
           ],
         ),

@@ -20,6 +20,7 @@ class _LoanAppExistUserScreenState extends State<LoanAppExistUserScreen> {
   String termsOfLoan = "Weekly"; //Values are: Weekly, Bi Weekly, Monthly
   TextEditingController durationController = TextEditingController();
   TextEditingController firstRepaymentDateController = TextEditingController();
+  TextEditingController accNumberController = TextEditingController();
   TextEditingController dateController = TextEditingController();
   TextEditingController guarantorController = TextEditingController();
 
@@ -31,6 +32,7 @@ class _LoanAppExistUserScreenState extends State<LoanAppExistUserScreen> {
   String? mTerms;
   int mDuration = 0;
   String? mFirstRepaymentDate;
+  String? mAccNumber = '';
   String? mDate;
   String mGuarantor = '';
 
@@ -46,9 +48,13 @@ class _LoanAppExistUserScreenState extends State<LoanAppExistUserScreen> {
   int biweek_days = 14;
   List repaymentDates = [];
 
+  //Others
+  late FocusNode genAccNumFocus;
+
   @override
   void initState() {
     super.initState();
+    genAccNumFocus = FocusNode();
     firstRepaymentDateController.text =
         "${DateTime.now().toLocal()}".split(' ')[0];
 
@@ -63,8 +69,10 @@ class _LoanAppExistUserScreenState extends State<LoanAppExistUserScreen> {
     termsOfLoan = "Weekly"; //Default value
     durationController.dispose();
     firstRepaymentDateController.dispose();
+    accNumberController.dispose();
     dateController.dispose();
     guarantorController.dispose();
+    genAccNumFocus.dispose();
   }
 
   // Initial Selected Value
@@ -81,7 +89,6 @@ class _LoanAppExistUserScreenState extends State<LoanAppExistUserScreen> {
     return GestureDetector(
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
       child: Scaffold(
-        
         backgroundColor: Colors.white,
         resizeToAvoidBottomInset: false,
         body: LayoutBuilder(
@@ -360,6 +367,48 @@ class _LoanAppExistUserScreenState extends State<LoanAppExistUserScreen> {
                     height: size.height * 0.02,
                   ),
 
+                  //Account Number
+                  TextFormField(
+                    style: kTextFormFieldStyle(),
+                    focusNode: genAccNumFocus,
+                    decoration: const InputDecoration(
+                      prefixIcon: Icon(Icons.account_box),
+                      labelText: 'Account Number',
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(15)),
+                      ),
+                    ),
+                    readOnly: true,
+                    controller: guarantorController,
+                    // The validator receives the text that the user has entered.
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Account Number required';
+                      } else if (value.length != 13) {
+                        return 'Account Number invalid';
+                      }
+                      return null;
+                    },
+                  ),
+                  //vertical space
+                  SizedBox(
+                    height: size.width * 0.01,
+                  ),
+                  //Loan terms
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      generateAccNumberButton(),
+                      SizedBox(
+                        width: size.width * 0.01,
+                      ),
+                    ],
+                  ),
+
+                  SizedBox(
+                    height: size.height * 0.02,
+                  ),
+
                   //date
                   DateOfApplicationWidgetTextView(),
 
@@ -622,6 +671,43 @@ class _LoanAppExistUserScreenState extends State<LoanAppExistUserScreen> {
             Text(
               'Submit Request',
               style: kDefualtFontStyleBody(size),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget generateAccNumberButton() {
+    return SizedBox(
+      //width: 30,
+      height: 30,
+      child: ElevatedButton(
+        style: ButtonStyle(
+          backgroundColor: MaterialStateProperty.all(kGreyDarkColor),
+          shape: MaterialStateProperty.all(
+            RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(0),
+            ),
+          ),
+        ),
+        onPressed: () {
+          genAccNumFocus.requestFocus();
+          //0 show progress indicator
+          //1 Get last acc number
+          //2. Increase by 1
+          //3. Display new Acc num
+          //4. Dismiss progress indicator
+        },
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const SizedBox(
+              width: 10,
+            ),
+            Text(
+              'Generate Account Number',
+              style: kDefualtFontStyleBody(size * 0.8),
             ),
           ],
         ),
